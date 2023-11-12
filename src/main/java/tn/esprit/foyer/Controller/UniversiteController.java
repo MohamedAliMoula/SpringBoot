@@ -1,6 +1,7 @@
 package tn.esprit.foyer.Controller;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.websocket.server.PathParam;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -43,6 +44,14 @@ public class UniversiteController {
     public void deleteUniversite(@PathVariable Long id){
         universiteService.removeUniversity(id);
 
+    }
+    @PutMapping("/affecter/{id}")
+    public Universite Affecter( @PathVariable Long id,@RequestParam("nomUniversite") String  universite){
+        return universiteService.affecterFoyerAUniversite(id,universite);
+    }
+    @PutMapping("/desaffecter/{id}")
+    public Universite DesAffecter( @PathVariable Long id,@RequestParam("nomUniversite") String  universite){
+        return universiteService.desaffecterFoyerAUniversite(id);
     }
 
 }
