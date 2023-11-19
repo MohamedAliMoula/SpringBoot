@@ -1,12 +1,12 @@
 package tn.esprit.foyer.Service.Impl;
 
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.foyer.Entity.Reservation;
 import tn.esprit.foyer.Rebository.ResevationRepository;
 import tn.esprit.foyer.Service.ReservationService;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -26,5 +26,10 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public Reservation retrieveReservation(long idReservation) {
         return resevationRepository.findById(idReservation).get();
+    }
+
+    @Override
+    public Reservation getReservationParAnneeUniversitaire(Date date) {
+        return  resevationRepository.findReservationsByAnneeUniversitaire(date);
     }
 }

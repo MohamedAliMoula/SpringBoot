@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.foyer.Entity.Chambre;
 import tn.esprit.foyer.Service.ChambreService;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @AllArgsConstructor
@@ -35,6 +36,16 @@ public class ChambreController {
     @PutMapping("/update")
     public Chambre updateBloc( @RequestBody Chambre  c){
         return chambreService.updateChambre(c);
+    }
+
+    @GetMapping("/getChambresParNomBloc ")
+    public Set<Chambre> getChambresParNomBloc(@RequestParam("nomBloc") String  nomBloc){
+        return  chambreService.getChambresParNomBloc(nomBloc);
+    }
+    @GetMapping("/getChambresParBlocEtType")
+    public long getChambresParBlocEtType(@RequestParam("id") Long id, @RequestParam("type") Chambre.TypeChambre type ){
+        long blocs = chambreService.nbrChambreParTypeEtBloc(type,id);
+        return blocs;
     }
 
 }

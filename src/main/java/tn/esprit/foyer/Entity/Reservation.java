@@ -1,6 +1,5 @@
 package tn.esprit.foyer.Entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,4 +29,8 @@ public class Reservation implements Serializable {
     @ManyToMany
 //    @JsonBackReference
     private List<Etudiant> etudiants;
+
+
+    public void setEtudiants(Etudiant etudiant) {
+    }
 }

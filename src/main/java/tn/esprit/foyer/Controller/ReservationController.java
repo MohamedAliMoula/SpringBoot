@@ -9,6 +9,7 @@ import tn.esprit.foyer.Entity.Chambre;
 import tn.esprit.foyer.Entity.Reservation;
 import tn.esprit.foyer.Service.ReservationService;
 
+import java.sql.Date;
 import java.util.List;
 
 @RestController
@@ -33,5 +34,8 @@ public class ReservationController {
     public Reservation updateBloc( @RequestBody Reservation  res){
         return reservationService.updateReservation(res);
     }
-
+    @GetMapping("/getbydate")
+    public Reservation getReservationById(@RequestParam("Date") Date date){
+        return  reservationService.getReservationParAnneeUniversitaire(date);
+    }
 }

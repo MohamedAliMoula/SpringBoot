@@ -45,5 +45,9 @@ public class EtudiantController {
     public List<Etudiant> addEtudiants(@RequestBody List<Etudiant> etudiants) {
         return etudiantService.addEtudiants(etudiants);
     }
+    @PutMapping  ("/affecterEtudiantReservation")
+    public Etudiant affecterEtudiantAReservation(@RequestParam("idReservation") String  idReservation,@RequestParam("nomEt") String  nomEt,@RequestParam("prenomEt") String  prenomEt) {
+        return etudiantService.affecterEtudiantAReservation(nomEt,prenomEt,idReservation);
+    }
 
 }
