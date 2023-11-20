@@ -46,40 +46,24 @@ public class EtudiantServiceImpl implements EtudiantService {
       return etudiantRepository.saveAll(etudiants);
     }
 
-//    public Etudiant affecterEtudiantAReservation(String nomEt, String prenomEt, String idReservation) {
-//        // Supposition de méthodes pour trouver un Etudiant et une Reservation par leurs identifiants
-//        Etudiant etudiant = etudiantRepository.findEtudiantByNomEtAndPrenomEt(nomEt, prenomEt);
-//        Reservation reservation = resevationRepository.findByIdReservation(idReservation);
-//
-//        if (etudiant != null && reservation != null) {
-//            // Supposition d'une manière d'associer un Etudiant avec une Reservation
-//            reservation.setEtudiants((List<Etudiant>) etudiant);
-//            // Sauvegarde de la reservation mise à jour
-//            resevationRepository.save(reservation);
-//        } else {
-//            // Gestion des cas où l'étudiant ou la réservation n'est pas trouvée
-//        }
-//        return etudiant;
-//    }
-    // In EtudiantServiceImpl.java
+
     @Override
     public Etudiant affecterEtudiantAReservation(String nomEt, String prenomEt, String idReservation) {
-        // Assuming that there is a method in EtudiantRepository to find by name and first name
         Etudiant etudiant = etudiantRepository.findEtudiantByNomEtAndPrenomEt(nomEt, prenomEt);
         Reservation reservation = resevationRepository.findByIdReservation(idReservation);
 
         if(etudiant != null && reservation != null) {
-            // Assuming Reservation has a method to set Etudiant
-            // This part may change based on your actual relationship and business logic
 
-            reservation.setEtudiants(etudiant);
-//            etudiant.setReservations((List<Reservation>) reservation);
-//            etudiantRepository.save(etudiant);
+
+            List<Etudiant> lsAux = reservation.getEtudiants();
+            lsAux.add(etudiant);
+            reservation.setEtudiants(lsAux);
+
             resevationRepository.save(reservation);
             return etudiant;
         }
 
-        return null; // or throw an exception if preferred
+        return null;
     }
 
 

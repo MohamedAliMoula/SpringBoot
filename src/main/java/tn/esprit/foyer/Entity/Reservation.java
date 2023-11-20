@@ -31,6 +31,4 @@ public class Reservation implements Serializable {
     private List<Etudiant> etudiants;
 
 
-    public void setEtudiants(Etudiant etudiant) {
-    }
 }

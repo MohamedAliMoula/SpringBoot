@@ -8,7 +8,7 @@ import tn.esprit.foyer.Rebository.BlocRepository;
 import tn.esprit.foyer.Rebository.ChambreRepository;
 import tn.esprit.foyer.Service.ChambreService;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Set;
 
@@ -43,26 +43,21 @@ public class ChambreServiceImpl  implements ChambreService {
         Bloc bloc = blocRepository.findBlocByNomBloc(nomBloc);
 
         if (bloc != null) {
-            // Supposition que Bloc possède une liste de Chambres
             return  bloc.getChambres();
         } else {
-            // Gestion du cas où le bloc n'est pas trouvé
             return null;
         }
     }
 
     @Override
     public long nbrChambreParTypeEtBloc(Chambre.TypeChambre type, long idBloc) {
-        // Supposition d'une méthode pour trouver un Bloc par son ID
         Bloc bloc = blocRepository.findById(idBloc).get();
 
         if (bloc != null) {
-            // Supposition que Bloc possède une liste de Chambres
             return bloc.getChambres().stream()
                     .filter(chambre -> chambre.getTypeChambre() == type)
                     .count();
         } else {
-            // Gestion du cas où le bloc n'est pas trouvé
             return 0;
         }
     }
