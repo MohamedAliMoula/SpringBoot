@@ -18,8 +18,8 @@ import java.util.Set;
 @AllArgsConstructor
 public class Chambre implements Serializable {
     public enum TypeChambre { SIMPLE, DOUBLE, TRIPLE };
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idChambre;
     private long numeroChambre;
     @Enumerated(EnumType.STRING)

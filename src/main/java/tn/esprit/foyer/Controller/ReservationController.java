@@ -38,4 +38,12 @@ public class ReservationController {
     public Reservation getReservationById(@RequestParam("Date") Date date){
         return  reservationService.getReservationParAnneeUniversitaire(date);
     }
+    @PostMapping("/ajouterReservation")
+    public Reservation ajouterReservation(@RequestParam("idchambre") long idChambre, @RequestParam("cinEtudiant") long cinEtudiant){
+        return  reservationService.ajouterReservation(idChambre,cinEtudiant);
+    }
+    @GetMapping("/getReservationParAnneeUniversitaireEtNomUniversite/anneeUniversite/nomUniversite")
+    public List<Reservation> getReservationParAnneeUniversitaireEtNomUniversite(@RequestParam("anneeUniversitaire") Date anneeUniversitaire,@RequestParam("nomUniversite") String nomUniversite){
+        return reservationService.getReservationParAnneeUniversitaireEtNomUniversite(anneeUniversitaire,nomUniversite);
+    }
 }
